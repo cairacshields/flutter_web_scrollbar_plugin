@@ -15,7 +15,8 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 /// We are actively working on things like mouse scroll detection, and
 /// automatically determining the height of your page content.
 ///
-/// Please feel free to file an issue report at the repository found here
+/// Please feel free to file an issue report at the repository found here:
+/// https://github.com/cairacshields/flutter_web_scrollbar_plugin
 
 class FlutterWebScrollBar {
   static void registerWith(Registrar registrar) {
@@ -59,12 +60,25 @@ class FlutterWebScrollBar {
 
 class FlutterWebScroller extends StatefulWidget {
 
+  /// Required! CallBack function used to update the scrollable content with the new drag position
   final Function scrollCallBack;
+
+  /// Optional: Background color of the scrollbar
   final Color scrollBarBackgroundColor;
+
+  ///Optional: Width of the scrollbar
   final double scrollBarWidth;
+
+  ///Optional: Color of the drag handle
   final Color dragHandleColor;
+
+  ///Optional: Width of the drag handle
   final double dragHandleWidth;
+
+  ///Optional: Height of the drag handle
   final double dragHandleHeight;
+
+  ///Optional: Border Radius of the drag handle
   final double dragHandleBorderRadius;
 
   FlutterWebScroller(this.scrollCallBack,
@@ -109,9 +123,12 @@ class _FlutterWebScrollerState extends State<FlutterWebScroller> {
                           Radius.circular(widget.dragHandleBorderRadius))),
                 ),
                 onVerticalDragUpdate: (dragUpdate) {
+                  /// Send the new drag details to the callback in order to properly update the scrollable content position
                   widget.scrollCallBack(dragUpdate);
+
                   setState(() {
                     if (dragUpdate.globalPosition.dy >= 0) {
+                      /// Update the offset of the drag handle to push it down or shift it up
                       _offset = dragUpdate.globalPosition.dy;
                     }
                   });
