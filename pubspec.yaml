@@ -1,11 +1,11 @@
 name: flutter_web_scrollbar
 description: A customizable scrollbar for flutter web.
 version: 0.0.1
-author: CAira Shields
-homepage: https://github.com/cairacshields/flutter_web_scroller
+homepage: https://github.com/cairacshields/flutter_web_scrollbar_plugin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.10.0 <2.0.0"
 
 dependencies:
   flutter:
