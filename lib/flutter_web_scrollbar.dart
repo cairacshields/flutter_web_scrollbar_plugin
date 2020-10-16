@@ -130,6 +130,10 @@ class _FlutterWebScrollerState extends State<FlutterWebScroller> {
                     if (dragUpdate.globalPosition.dy >= 0) {
                       /// Update the offset of the drag handle to push it down or shift it up
                       _offset = dragUpdate.globalPosition.dy;
+
+
+                      double maxHeight = MediaQuery.of(context).size.height - widget.dragHandleHeight;
+                      _offset =(_offset>maxHeight) ? maxHeight : _offset;
                     }
                   });
                 },
